@@ -67,6 +67,8 @@ def ecrire_xml():
     mon_fichier = open("data_posts.xml", "w")
     mon_fichier.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n")
     mon_fichier.write("<donnees>\n")
+
+    #Range les tweets du plus récent au plus ancien
     while i <= len(old)-1:
         mon_fichier.write("<post id=\"post-")
         text = str(y) +"\" value=\""
@@ -160,6 +162,7 @@ time.sleep(2)
 
 twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 
+#Configuration pour envoyer une requête demandant les 20 derniers tweets avec le filtre choisit
 search_results = twitter.search(count=20, q=chargement_hashtag())
 
 try:
@@ -183,6 +186,7 @@ try:
 except TwythonError as e:
     print(e)
 
+#incrémente le compteur de tweets directement de 20
 increment_tweet(20)
 
 try:
