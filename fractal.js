@@ -117,7 +117,7 @@ function canvasApp(couleur1,couleur2) {
 			
 			//define gradient
 			grad = context.createRadialGradient(0,0,minR,0,0,maxR);
-			grad.addColorStop(1,couleur1);//pour changer la couleur c'est ici
+			grad.addColorStop(1,couleur1);//<-- here for changing colors
 			grad.addColorStop(0,couleur2);
 			//grad.addColorStop(1,"rgba(255,170,200,0.2)");
 			//grad.addColorStop(1,"#FF89A5");
