@@ -1,4 +1,4 @@
-/* SOCIALDEVICES V2.4 2018 */
+/* SOCIALDEVICES V2.5 2018 */
 /* ==================================== OVERLAY ==================================== */
 .overlay {
     position: relative;
@@ -62,33 +62,37 @@ header{
 	overflow:hidden;
 }
 #pic_sponsor{
-	max-width:19vh;
+	max-width:19vh;/*Modification to make, about the final screen size*/
 }
 /* ==================================== NAV ==================================== */
 #mySidenav a {
     position: absolute;
-    left: -93px;
+    left: -93px;/* default hidden menu's position */
     transition: 0.3s;
     padding: 15px;
     width: 100px;
     text-decoration: none;
     font-size: 15px;
     color: white;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;/* round design */
 }
-#mySidenav a:hover {
+#mySidenav a:hover {/* menu's position when cursor's hover it */
     left: 0;
 }
 #filter {
     top: 20px;
+    background-color: #AADDE0;
+}
+#adress {
+    top: 80px;
     background-color: #55ACEE;
 }
 #counter {
-    top: 80px;
+    top: 140px;
     background-color: #AADDE0;
 }
 #design {
-    top: 140px;
+    top: 200px;
     background-color: #55ACEE;
 }
 .inputcolor{
