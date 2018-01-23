@@ -1,4 +1,5 @@
 // SOCIALDEVICES V2.5 2018
+// Author : clbouchier
 function open_option_filter(){
      window.open('page_filter.php','parametre','menubar=no, scrollbars=no, top=100, left=100, width=400, height=200');
 }
