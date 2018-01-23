@@ -2,8 +2,8 @@
 <donnees>
 <post id="post-1" value="twitter">
 <pic_avatar>http://pbs.twimg.com/profile_images/1594794066/1003536824_normal.jpg</pic_avatar>
-<user_name>:000-000</user_name>
-<text>5dfdfdfd</text>
+<user_name>NAME</user_name>
+<text>TEXTE</text>
 <created_at>Fri Jan 12 14:34:33 2018</created_at>
 </post>
 <post id="post-2" value="twitter">
