@@ -17,34 +17,14 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-def json2xml(json_obj, line_padding=""):
-    result_list = list()
-
-    json_obj_type = type(json_obj)
-
-    if json_obj_type is list:
-        for sub_elem in json_obj:
-            result_list.append(json2xml(sub_elem, line_padding))
-
-        return "\n".join(result_list)
-
-    if json_obj_type is dict:
-        for tag_name in json_obj:
-            sub_obj = json_obj[tag_name]
-            result_list.append("%s<%s>" % (line_padding, tag_name))
-            result_list.append(json2xml(sub_obj, "\t" + line_padding))
-            result_list.append("%s</%s>" % (line_padding, tag_name))
-
-        return "\n".join(result_list)
-
-    return "%s%s" % (line_padding, json_obj)
-
+#incremente le compteur de tweets sur l'afficheur à segments
 def increment_tweet(nb_new_tweet):
 	try:
 		with open("Counter.txt", "r") as fichier:
 			contenu = fichier.read()
     		fichier.close()
 		nombre = int(float(contenu[:-1]))+nb_new_tweet
+		#vérifiaction que le nombre ne dépasse pas 9999(nombre maximum possible sur l'afficheiur à segments
 		if nombre > 9999:
 			nombre = 0
 		with open("Counter.txt", "w") as fichier:
@@ -57,12 +37,17 @@ def increment_tweet(nb_new_tweet):
 		fichier.close()
 		ser.write(str(nb_new_tweet)+"t")
 	time.sleep(2)
-
+	
+#La fonction va lire le nombre de like sur la page choisit par l'utilisateur
 def lire_like():
-    html = urlopen('https://www.facebook.com/MakerFairePerpignan/').read()
-    soup = BeautifulSoup.BeautifulSoup(html, "html.parser")
+    with open("facebook.txt", "r") as fichier:
+		contenu = fichier.read()
+    	fichier.close()
+	
+	html = urlopen('https://www.facebook.com/'contenu+'/').read()
+	soup = BeautifulSoup.BeautifulSoup(html, "html.parser")
 
-    letters = soup.findAll('div', {"class":"_2pi9 _2pi2"})[0].div.text
+	letters = soup.findAll('div', {"class":"_2pi9 _2pi2"})[0].div.text
 
     i=0
     nb_like=""
@@ -71,6 +56,7 @@ def lire_like():
         i=i+1
     ser.write('f'+str(nb_like))
 
+#Fonction convertissant les .json générer ecrire_json() par  en .xml
 def ecrire_xml():
     with open("fichier.json", "r") as fichier:
         old = json.load(fichier)
@@ -108,12 +94,15 @@ def ecrire_xml():
     mon_fichier.write("</donnees>")
     fichier.close()
 
+
+#Lis le filtre choisit par l'utilisateur
 def chargement_hashtag():
     with open("Filter.txt", "r") as fichier:
         TERMS = fichier.read()
     fichier.close()
     return TERMS
 
+#Créer une speudo base de données en .json
 def ecrire_json(user_name_recu, url_avatar_recu, text_recu, media_recu,created_at_recu, platform_recu):
     class Post:
 
@@ -158,13 +147,15 @@ def ecrire_json(user_name_recu, url_avatar_recu, text_recu, media_recu,created_a
     fichier.close()
     ecrire_xml()
 
+#Remplacez **** par vos clé
+APP_KEY = '****'
+APP_SECRET = '****'
+OAUTH_TOKEN = '****'
+OAUTH_TOKEN_SECRET = '****'
 
-APP_KEY = 'OoNW7WIg0k3R8zEQ0sOr0NrhT'
-APP_SECRET = 'hykcLkAd2WrecH8ItupJGliqgQAShH940r2PnhgNVSN5Bt2Lni'
-OAUTH_TOKEN = '1412679127-FJJYV1jW5mfceSyOaif2WVO9MgFO63duNwjhkgZ'
-OAUTH_TOKEN_SECRET = 'mZn27oP20gtiCCE3aqxL4XMfWe105My2Q2MfJYP6v5xPf'
-
+#Définition de l'addresse de l'arduino
 ser = serial.Serial('/dev/ttyACM0', 9600)
+#attente afin de ne laisser le temps à l'Arduino d'être fonctionnelle avec son port série 
 time.sleep(2)
 
 twitter = Twython(APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
@@ -179,6 +170,7 @@ try:
         created_at_recu = tweet['created_at']
         created_at_recu=created_at_recu[:20]+created_at_recu[26]+created_at_recu[27]+created_at_recu[28]+created_at_recu[29]
         platform_recu = 'twitter'
+	#vérification de la présence une image ou une video joint au tweet
         if 'media' in tweet['entities'].keys():
             media = tweet['entities']['media']
             for mediaitem in media:
