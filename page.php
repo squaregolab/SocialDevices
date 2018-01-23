@@ -1,13 +1,13 @@
-<!-- SOCIALDEVICES V2.4 2018 - Main Page -->
+<!-- SOCIALDEVICES V2.5 2018 - Main Page -->
 <!DOCTYPE html>
-<html><meta charset="UTF-8"/>
+<html><meta charset="UTF-8"/><!-- for specials caracters -->
 	<head>
-		<script src="function.js"></script>
+		<title>SocialDevices</title><!-- tab title -->
+		<!-- LINK -->
 		<link rel="stylesheet" href="style_screen.css"/>
-		
-		<script src="modernizr-2.js"></script>
+		<script src="function.js"></script><!-- menu's functions -->
+		<script src="modernizr-2.js"></script><!-- for fractal and canvas -->
 		<script src="fractal.js"></script>
-		<title>SocialDevices</title>
 	</head>
 
 	<body onload="intialisation(event)">
@@ -19,18 +19,19 @@
 					<a id="btnExport" value="export image (png)"></a>
 				</div>
 			</div>
-			<div class="middle"><!-- OverlayUp : Posts and sponsors -->
+			<div class="middle"><!-- OverlayUp :  Menu -->
 				<nav id="mySidenav" class="sidenav">
-					<a id="filter" onclick="open_option()">Filter</a>
-					<a id="counter" onclick="Restart_counter()">Counter</a>
+					<a id="filter" onclick="open_option_filter()">Filter</a>
+					<a id="adress" onclick="open_option_adress()">Adress</a>
+					<a id="counter" onclick="open_option_counter()">Counter</a>
 					<a id="design">
-						#Color1<input class="inputcolor" id="SelectionColor1" type="text" name="color1" value="00BEE1"/><br>
-						#Color2<input class="inputcolor" id="SelectionColor2" type="text" name="color2" value="E31E2D"/><br>
-						<button type="button"  onclick="location.reload()">OK</button><br>
+						#Color1<input class="inputcolor" id="SelectionColor1" type="text" name="color1" value="00BEE1"/><br><!-- ask for color 1 -->
+						#Color2<input class="inputcolor" id="SelectionColor2" type="text" name="color2" value="E31E20"/><br><!-- ask for color2 -->
+						<button type="button"  onclick="location.reload()">OK</button><br><!-- reload page for color's motification to be make -->
 					</a>
 				</nav>
-				<div class="row" >
-					<iframe src="iframe_post.php" ></iframe>
+				<div class="row"><!-- OverlayUp : Posts and sponsors -->
+					<iframe src="iframe_post.php"><!-- Posts Position --></iframe>
 					<div class="columnsponsor">
 						<img id="pic_sponsor" src='sponsor.png'/>
 					</div>
@@ -47,17 +48,15 @@
 	var HeightCanvas = Height*0.95;
 	var WidthCanvas = Width*1.004;
 	var texte="<canvas id=\"displayCanvas\" height=\""+HeightCanvas+"px\" width=\""+WidthCanvas+"px\" style=\"margin-left: -1%; margin-top: -1%;\">Your browser does not support HTML5 canvas.</canvas>";
-	position.innerHTML = texte;
+	position.innerHTML = texte;//display fractal at position
 	
 	function intialisation (objet_event) {
-		var MyColor1 ="97D46F";
+		var MyColor1 ="97D46F";//default color1
 		MyColor1 = document.getElementById("SelectionColor1").value;
-		MyColor1 = "#"+MyColor1;
-		//alert(MyColor1);
-		var MyColor2 = "0033cc";
+		MyColor1 = "#"+MyColor1;//concatenate
+		var MyColor2 = "0033cc";//default color2
 		MyColor2=document.getElementById("SelectionColor2").value;
 		MyColor2 = "#"+MyColor2;
-		//alert(MyColor2);
-		canvasApp(MyColor1,MyColor2);
+		canvasApp(MyColor1,MyColor2);//colors send to fractal.js's function
 	}
 </script>
