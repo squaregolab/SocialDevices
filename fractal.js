@@ -1,3 +1,5 @@
+// http://rectangleworld.com/blog/archives/538
+
 window.addEventListener("load", windowLoadHandler, false);
 
 //for debug messages while testing code
