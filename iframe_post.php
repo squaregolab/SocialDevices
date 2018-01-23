@@ -1,21 +1,19 @@
-<!--SOCIALDEVICES V2.4 2018 -->
+<!--SOCIALDEVICES V2.5 2018 TweetPost Page -->
 <!DOCTYPE html>
-
-<html><meta charset="UTF-8"/>
+<html><meta charset="UTF-8"/><!-- for specials caracters -->
 	<head>
+		<title>SocialDevices iframe</title><!-- tab title -->
 		<!-- LINK -->
 		<link rel="stylesheet" href="style_iframe.css"/>
-		<!-- ---- -->
-		<title>SocialDevices iframe</title>
 	</head>
 	<body id="RefreshDiv">
 		<div class="columnposts">
 			<?php
-				$xml=simplexml_load_file('data_posts.xml') or die('Error: Cannot open data file');
-				for($i=0; $i<20; $i++){//loop for the 20 last posts on the datafile
-					if ($xml->post[$i] == true){//if there is a post
-						echo "<div class='element_post' >";//strat design of tweet post
-						echo "<h_post>";
+				$xml=simplexml_load_file('data_posts.xml') or die('Error: Cannot open data file');//Load data file
+				for($i=0; $i<20; $i++){//loop for the 20 last <post> in the datafile
+					if ($xml->post[$i] == true){//if there is a post (in case there'r less than 20)
+						echo "<div class='element_post' >";//--- start design of tweet post
+						echo "<h_post>";//for design of user name
 						if ($xml->post[$i]->pic_avatar == true){
 							echo "<img id='picture_avatar' src='";
 							echo $xml->post[$i]->pic_avatar."'/>";
@@ -29,13 +27,15 @@
 						}
 						echo "<p_date>";
 						echo $xml->post[$i]->created_at."</p_date>";
-						echo "</div>";//stop design of tweet post
+						echo "</div>";//--- stop design of tweet post
 					}
 				}
 			?>
 		</div>
     </body>
 </html>
+
+<!-- REFRESH PARAMETER -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/
 libs/jquery/1.3.0/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -44,4 +44,4 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 	function (){
 		$(RefreshDiv).load('iframe_post.php').fadeIn(milliseconds);
 	}, 10000);
-</script><!-- This eatch 10 secondes -->
+</script>
