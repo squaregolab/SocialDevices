@@ -44,5 +44,5 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 	var auto_refresh = setInterval(
 	function (){
 		$(RefreshDiv).load('iframe_post.php').fadeIn(milliseconds);
-	}, 10000);
+	}, 5000);
 </script>
