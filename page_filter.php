@@ -1,4 +1,4 @@
-<!-- SOCIALDEVICES V2.5 2018 - PopUp OptionPage -->
+<!-- SOCIALDEVICES V3.0 2018 - PopUp OptionPage -->
 <!-- Author : clbouchier -->
 <!doctype html>
 <html><meta charset="utf-8"/><!-- for specials caracters -->
