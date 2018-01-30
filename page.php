@@ -1,4 +1,4 @@
-<!-- SOCIALDEVICES V2.5 2018 - Main Page -->
+<!-- SOCIALDEVICES V3.0 2018 - Main Page -->
 <!-- Author : clbouchier -->
 <!DOCTYPE html>
 <html><meta charset="UTF-8"/><!-- for specials caracters -->
@@ -6,21 +6,27 @@
 		<title>SocialDevices</title><!-- tab title -->
 		<!-- LINK -->
 		<link rel="stylesheet" href="style_screen.css"/>
+		
 		<script src="function.js"></script><!-- menu's functions -->
 		<script src="modernizr-2.js"></script><!-- for fractal and canvas -->
 		<script src="fractal.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>	
 	</head>
 
 	<body onload="intialisation(event)">
 		<div class="overlay"><!-- Overlay -->
-			<div><!-- OverlayDown : Fractal -->
+			<div class="overlay_down"><!-- OverlayDown : Fractal -->
 				<div class="containe">
 					<div id="position"><!-- Canvas position --></div>
 					<a id="btnRegenerate" value="regenerate"></a>
 					<a id="btnExport" value="export image (png)"></a>
 				</div>
 			</div>
-			<div class="middle"><!-- OverlayUp :  Menu -->
+			<div class="overlay_middle">
+				<div id="RefreshDiv"><!-- data from iframe_post.php --></div>
+			</div>
+			<div class="overlay_up"><!-- OverlayUp :  Menu and sponsors -->
 				<nav id="mySidenav" class="sidenav">
 					<a id="filter" onclick="open_option_filter()">Filter</a>
 					<a id="adress" onclick="open_option_adress()">Adress</a>
@@ -31,11 +37,8 @@
 						<button type="button"  onclick="location.reload()">OK</button><br><!-- reload page for color's motification to be make -->
 					</a>
 				</nav>
-				<div class="row"><!-- OverlayUp : Posts and sponsors -->
-					<iframe src="iframe_post.php"><!-- Posts Position --></iframe>
-					<div class="columnsponsor">
-						<img id="pic_sponsor" src='sponsor.png'/>
-					</div>
+				<div class="columnsponsor">
+					<img id="pic_sponsor" src='sponsor.png'/>
 				</div>
 			</div>
 		</div>
@@ -60,4 +63,15 @@
 		MyColor2 = "#"+MyColor2;
 		canvasApp(MyColor1,MyColor2);//colors send to fractal.js's function
 	}
+</script>
+<script type="text/javascript">
+	$.get("iframe_post.php",function(data){//get of the data, the one iframe_post.php creat
+		$("#RefreshDiv").html(data);//put in the RefreshDiv position the row data from iframe_post.
+	});//load a first time the posts
+	var auto_refresh = setInterval(
+	function (){
+		$.get("iframe_post.php",function(data){//get of the data, the one iframe_post.php creat
+			$("#RefreshDiv").html(data);//put in the RefreshDiv position the row data from iframe_post.
+		});
+	}, 5000);//then reload posts eatch 5 seconds.
 </script>
