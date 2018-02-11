@@ -1,7 +1,7 @@
 # SocialDevices
 Social devices for Perpignan Mini Maker Faire 2018
 
-Lien vers la documentation en pdf:https://docs.google.com/document/d/1DlQfy6I-EONOfpOmeeDswz6glQorHdCLapXqrAiPkpQ/edit?usp=sharing
+La documentation en pdf est disponible parmi les fichiers du github sous le nom de fichier de "Documentation du projet Social Devices.pdf"
 
 Introduction:
 
