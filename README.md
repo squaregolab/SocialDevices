@@ -12,7 +12,7 @@ Le projet Social Devices est le travail de deux étudiants en première année d
 
 Le système regroupe un affichage de tweets et de sponsor sur un écran et de deux compteurs, avec un compteur de like et un compteur de tweet.
 
-Le système est fait pour être paramétrable afin d’être installer sur d’autres événements.
+Le système est fait pour être paramétrable afin d’être installé sur d’autres événements.
 
 
 Mise en place du système sur Raspberry PI:
