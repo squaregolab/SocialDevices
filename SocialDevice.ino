@@ -96,12 +96,12 @@ void loop()
     if(msgChar[0]=='f')
     {
       int like = nombre_recu;
-      afficheur2Nombre(like);
+      afficheur1Nombre(like);
     }
     else if(msgChar[0]=='t')
     {
       int tweet = nombre_recu;
-      afficheur1Nombre(tweet);
+      afficheur2Nombre(tweet);
     }
   }
 }
