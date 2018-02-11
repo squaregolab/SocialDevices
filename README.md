@@ -3,6 +3,17 @@ Social devices for Perpignan Mini Maker Faire 2018
 
 Lien vers la documentation en pdf:https://docs.google.com/document/d/1DlQfy6I-EONOfpOmeeDswz6glQorHdCLapXqrAiPkpQ/edit?usp=sharing
 
+Introduction:
+
+Le projet Social Devices est le travail de deux étudiants en première année d’IMERIR au SquaregoLab de Perpignan pour la Mini Maker Faire de Perpignan.
+
+  Le but de ce projet est de dynamiser la communication sur les réseaux sociaux autour d’un événement et de pouvoir mesurer son importance.
+  Ainsi en deux jours, le hashtag choisi pour la Mini Maker a approché la barre des 400 tweets.
+
+Le système regroupe un affichage de tweets et de sponsor sur un écran et de deux compteurs, avec un compteur de like et un compteur de tweet.
+
+Le système est fait pour être paramétrable afin d’être installer sur d’autres événements.
+
 
 Mise en place du système sur Raspberry PI:
 On considère que votre Raspberry Pi est déjà fonctionnelle avec un linux graphique installé.
